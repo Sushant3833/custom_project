@@ -18,8 +18,17 @@ def execute(filters=None):
     data = []
 
     # Get all milestone tasks
-    milestone_tasks = frappe.get_all("Task", filters={"is_milestone": 1}, fields=["name", "subject", "status", "exp_start_date", "exp_end_date", "completed_on",
-                                                                                  "custom_actual_start_date", "custom_actual_end_date", "custom_delay_owner", "custom_notes"])
+    # milestone_tasks = frappe.get_all("Task", filters={"is_milestone": 1}, fields=["name", "subject", "status", "exp_start_date", "exp_end_date", "completed_on",
+    #                                                                               "custom_actual_start_date", "custom_actual_end_date", "custom_delay_owner", "custom_notes"])
+
+    task_filters = {"is_milestone": 1}
+    if filters and filters.get("project"):
+        task_filters["project"] = filters.get("project")
+
+    milestone_tasks = frappe.get_all("Task", filters=task_filters, fields=[
+        "name", "subject", "status", "exp_start_date", "exp_end_date", "completed_on",
+        "custom_actual_start_date", "custom_actual_end_date", "custom_delay_owner", "custom_notes"
+    ])
 
     for parent_task in milestone_tasks:
         # Get all dependent tasks linked via depends_on child table

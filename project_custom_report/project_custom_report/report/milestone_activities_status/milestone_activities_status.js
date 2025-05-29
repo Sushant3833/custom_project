@@ -3,6 +3,12 @@
 
 frappe.query_reports["MILESTONE_ACTIVITIES STATUS"] = {
 	"filters": [
-
-	]
+        {
+            "fieldname": "project",
+            "label": "Project",
+            "fieldtype": "Link",
+            "options": "Project",
+            "reqd": 0
+        }
+    ]
 };
