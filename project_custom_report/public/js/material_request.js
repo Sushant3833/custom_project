@@ -57,7 +57,7 @@ function get_items_from_bom(frm) {
                         frappe.throw(__("BOM does not contain any stock item"));
                     } else {
                         erpnext.utils.remove_empty_first_row(frm, "items");
-                        console.log("Right  function#####")
+            
                         $.each(r.message, function (i, item) {
                             var row = frappe.model.add_child(frm.doc, "Material Request Item", "items");
             
@@ -71,7 +71,7 @@ function get_items_from_bom(frm) {
                             row.qty = item.qty;
                             row.project = item.project;
             
-                            // Custom fields
+                            // Add custom fields from BOM Item
                             row.custom_small_text = item.custom_small_text || "";
                             row.custom_long_text = item.custom_long_text || "";
                         });
