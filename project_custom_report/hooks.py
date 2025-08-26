@@ -247,6 +247,6 @@ doctype_js = {
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
 
-override_doctype_class = {
-    "Leave Application": "project_custom_report.project_custom_report.leave_validate_remove.CustomLeaveApplication"
-}
+# override_doctype_class = {
+#     "Leave Application": "project_custom_report.project_custom_report.leave_validate_remove.CustomLeaveApplication"
+# }
